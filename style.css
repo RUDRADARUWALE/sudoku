@@ -1,0 +1,116 @@
+
+
+.cell:active {
+  background: linear-gradient(45deg, #d3ffd3, #a3e4a3); 
+  border-color: #c41414; 
+  box-shadow: 0 0 20px rgba(34, 139, 34, 0.5); 
+  transform: scale(1.1) rotate(10deg); 
+  transition: all 0.4s ease; 
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: darkgreen;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  background-image: url('hello.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+h1 {
+  font-family: 'Dancing Script', cursive; /* Elegant script font */
+  font-weight: 700; /* Bold font weight */
+  background: linear-gradient(45deg, #ff6ec4, #7873f5); /* Vibrant gradient background */
+  color: white; /* White text color */
+  padding: 20px 40px; /* Increased padding */
+  border-radius: 20px; /* More rounded corners */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Larger shadow */
+  border: 3px solid #ff6ec4; /* Pink border */
+  margin-bottom: 30px; /* Space below heading */
+  text-shadow: 2px 2px #7873f5; /* Text shadow */
+  transform: rotate(-5deg); /* Slight rotation */
+  transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+
+h1:hover {
+  transform: rotate(5deg); /* Hover effect */
+}
+
+.sudoku-container {
+  margin-top: 20px;
+  color: darkgreen;
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  border-collapse: collapse;
+  border: 4px solid #006400;
+}
+
+.cell {
+  width: 50px; 
+  height: 50px;
+  text-align: center;
+  font-size: 22px; 
+  border: 1px solid #999;
+  transition: all 0.3s ease-in-out;
+}
+
+table tr:nth-child(3n) td,
+table tr:nth-child(3n + 3) td {
+  border-bottom: 2px solid #006400; 
+}
+
+table td:nth-child(3n) {
+  border-right: 2px solid #006400; 
+}
+
+input {
+  outline: none;
+  width: 100%;
+  height: 100%;
+  font-size: inherit;
+  border: none;
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: darkgreen;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: red;
+}
+
+.solved {
+  background-color: #ef8b59;
+  transition: all 0.2s ease-in-out;
+}
