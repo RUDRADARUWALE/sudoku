@@ -1,58 +1,49 @@
-# Sudoku Solver
+# AI Invoice Auditor
 
-This project is a Sudoku Solver built with HTML, CSS, and JavaScript. It provides an interactive interface for users to input a Sudoku puzzle and then solves the puzzle at the click of a button.
+A browser-based auditing tool that detects billing leakage in vendor invoices by extracting invoice data and validating it against contract/rate-card logic.
 
-## Table of Contents
+## What it does
 
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Screenshots](#screenshots)
-- [Technologies](#technologies)
+- Reads invoice files in multiple formats: **PDF, images (PNG/JPG), TXT, and JSON**.
+- Extracts vendor, invoice number, line items, rates, GST %, HSN, and totals.
+- Runs automated checks for:
+  - Rate-card mismatches
+  - GST and HSN discrepancies
+  - Duplicate invoices
+  - Mystery surcharges
+  - Calculation errors
+  - Historical price variance
+- Produces a dashboard summary and downloadable JSON audit report.
 
-## Features
+## Run locally
 
-- Interactive Sudoku grid for user input.
-- Real-time puzzle solving.
-- Highlighting solved cells.
-- Responsive design.
+1. Open `index.html` directly in a browser, or serve statically:
+   ```bash
+   python3 -m http.server 8000
+   ```
+2. Open `http://localhost:8000`
+3. Upload one or more invoice files and click **Run Audit**.
 
-## Getting Started
+## Input guidance
 
-### Prerequisites
+For best extraction accuracy in this client-only version:
 
-To run this project locally, you need a web browser.
+- Use text-rich PDFs or high-quality scanned images.
+- For deterministic testing, upload `.txt` invoices in this pattern:
 
-### Installation
+```text
+Vendor: Acme Logistics
+Invoice No: ACM-1029
+Date: 2026-02-02
+Item: Freight Charge | Qty: 10 | Rate: 1300 | GST: 18 | HSN: 9965
+Item: Fuel Surcharge | Qty: 10 | Rate: 300 | GST: 18 | HSN: 9965
+Total: 18880
+```
 
-1. Clone the repository:
-    ```bash
-    gh repo clone RUDRADARUWALE/sudoku
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd sudoku-solver
-    ```
+- You can paste your own vendor contract/rate-card JSON in the rate-card panel.
 
-## Usage
+## Notes
 
-1. Open `index.html` in your web browser.
-2. Enter the Sudoku puzzle into the grid.
-3. Click the "Solve Puzzle" button.
-4. The solved puzzle will be displayed with solved cells highlighted.
-
-## Screenshots
-
-<div style="width: 100%;">
-  <img src="screenshot1.png" alt="Sample Values filled " style="float: left; width: 45%; margin-right: 5%;">
-  <img src="screenshot2.png" alt="Solved Sudoku" style="float: right; width: 45%; margin-left: 5%;">
-</div>
-
-<div style="clear: both;"></div>
-
-
-## Technologies
-
-- HTML
-- CSS
-- JavaScript
+- OCR for images uses `tesseract.js` in-browser.
+- PDF text extraction uses `pdfjs-dist` in-browser.
+- This project is front-end only; no invoice data is uploaded to a server by default.
